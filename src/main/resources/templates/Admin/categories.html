@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+<h1>Welcome to Admin Panel</h1>
+
+<h2>Categories</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.id}" th:id="'category_id_' + ${category.id}">ID</td>
+        <td th:text="${category.name}" th:id="'category_name_' + ${category.id}">Name</td>
+        <td th:text="${category.description}" th:id="'category_description_' + ${category.id}">Description</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Add Category</h2>
+<form method="post" action="/admin/categories/add">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description"><br>
+    <button type="submit">Add Category</button>
+</form>
+
+<h2>Products</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">ID</td>
+        <td th:text="${product.name}">Name</td>
+        <td th:text="${product.price}">Price</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Add Product</h2>
+<form method="post" action="/admin/products/add" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="nam" name="name"><br>
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price"><br>
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image"><br>
+    <button type="submit">Add Product</button>
+</form>
+
+</body>
+</html>
